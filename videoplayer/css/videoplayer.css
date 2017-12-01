@@ -1,0 +1,1476 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+a {
+    outline: 0px
+}
+.videoInsert {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden
+}
+.videoPlayer .loadersmall {
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    margin: -25px 0px 0px -25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100
+}
+@keyframes "spin" {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.videoPlayer .bg_logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url("../images/hungama_logo.png") no-repeat center center;
+    background-size: 70%;
+    z-index: 1
+}
+.videoPlayer {
+    position: relative;
+    margin: 0px auto
+}
+.videoPlayer .thumb {
+    display: none;
+    position: absolute;
+    z-index: 999
+}
+.videoPlayer .vp_skin {
+    position: absolute;
+    z-index: 9;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    height: 64px;
+    background: url(../images/bgskin.png) z-index: 10;
+    transition: all 0.5s ease
+}
+.videoPlayer .vp_skin.mouseout {
+    bottom: -70px
+}
+.videoPlayer .jw-captions {
+    top: -30x !important
+}
+.videoPlayer .jw-flag-user-inactive .jw-captions {
+    top: 0 !important
+}
+.videoPlayer .vp_skin .playerProgressbar {
+    left: 1%;
+    position: absolute;
+    top: 0px;
+    width: 98%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    cursor: pointer
+}
+.videoPlayer .vp_skin .playerProgressbar .ui-slider-range {
+    height: 4px
+}
+.videoPlayer .vp_skin .playerProgressbar .ui-slider-handle {
+    top: -4px !important;
+    outline: 0;
+    margin: 0px
+}
+.videoPlayer .vp_skin .playerProgressbar:hover,
+.videoPlayer .vp_skin .playerProgressbar:hover .ui-slider-range,
+.videoPlayer .vp_skin .playerProgressbar:hover .bufferBar {
+    height: 6px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+}
+.videoPlayer .vp_skin .playerProgressbar:hover .ui-slider-handle {
+    height: 12px;
+    width: 12px
+}
+.bufferBar {
+    height: 4px;
+    background: #999999;
+    position: absolute;
+    top: 0px
+}
+.jw-playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    transition: all ease 0.5s;
+    margin: -25px 0px 0px -25px !important
+}
+.jw-playBtn.replysub {
+    text-align: center
+}
+.jw-playBtn.replysub i {
+    margin-left: 3px
+}
+.jw-playBtn:hover {
+    background: rgba(0, 0, 0, 0.7)
+}
+.space {
+    display: inline-block;
+    height: 64px;
+    position: relative;
+    text-align: center;
+    width: 50px;
+    z-index: 1
+}
+.videoPlayer .vp_skin .timeBar {
+    font: 15px/64px arial;
+    color: #fff;
+    padding-left: 20px
+}
+.videoPlayer .vp_skin .timeBar span {
+    display: inline-block
+}
+.videoPlayer .vp_skin .playerControls {
+    min-height: inherit
+}
+.videoPlayer .vp_skin .playerControlbtn {
+    width: 45px;
+    height: 64px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    z-index: 1
+}
+.videoPlayer .vp_skin .playerControls.left {
+    float: left
+}
+.videoPlayer .vp_skin .playerControls.right {
+    float: right
+}
+.videoPlayer .vp_skin .disabled {
+    opacity: 0.3
+}
+.videoPlayer .vp_skin .btnPlay i {
+    background: none;
+    width: 25px;
+    margin-top: 16px;
+    font-size: 28px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnPre_30 i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnNxt_30 i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnPause i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnResize {
+    background-position: none;
+    width: 25px;
+    display: inline-block;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .jw_volume i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .jw_settings i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .jw_favourite i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 18px;
+    font-size: 24px;
+    color: #fff
+}
+.videoPlayer .vp_skin .jw_download i {
+    background: none;
+    width: 25px;
+    height: 25px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnFavourite {
+    background-position: -140px -124px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px
+}
+.videoPlayer .vp_skin .btnDownload {
+    background-position: -180px -124px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px
+}
+.videoPlayer .vp_skin .btnFaceook {
+    background-position: -222px -124px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px
+}
+.videoPlayer .vp_skin .btnTwitter {
+    background-position: -264px -124px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px
+}
+.videoPlayer .vp_skin .btnVolume {
+    background-position: -176px -65px;
+    width: 32px;
+    height: 32px;
+    margin-top: 8px
+}
+.videoPlayer .vp_skin .btnVolume.mute {
+    background-position: -138px -65px
+}
+.videoPlayer .vp_skin .btnVolume.mid {
+    background-position: -214px -65px
+}
+.videoPlayer .vp_skin .btnVolume.high {
+    background-position: -252px -65px
+}
+.videoPlayer .vp_skin .playerControlbar li {
+    float: left;
+    list-style: none;
+    position: relative
+}
+.videoPlayer .vp_skin .customBar .playerControlbtn {
+    width: 45px
+}
+.videoPlayer .vp_skin .ui-widget {
+    font-size: 0.5em
+}
+.videoPlayer .vp_skin .soundControlbar {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 60px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px 5px 0px 0px;
+    transition: all 1s ease;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0
+}
+.videoPlayer .vp_skin .soundControlbar.show {
+    visibility: visible;
+    opacity: 1
+}
+.soundControlbar .jw_soundControlbar,
+#soundControlbar {
+    margin: 10px auto
+}
+.videoPlayer .vp_skin .ui-slider-range {
+    background: #0094f6
+}
+.volumePercent {
+    color: #828282;
+    font: 12px/16px arial;
+    display: block;
+    margin-top: 10px
+}
+.videoPlayer .vp_skin .ui-slider-handle {
+    border-radius: 50%;
+    background: #0092FF;
+    border: 1px solid #0092FF;
+    left: -2px;
+    cursor: pointer;
+    padding: 0px;
+    height: 10px;
+    width: 10px
+}
+.videoPlayer .vp_skin .soundControlbar .ui-widget-content {
+    border: 1px solid #666;
+    padding: 2px;
+    border-radius: 5px;
+    width: 5px;
+    margin-bottom: 10px
+}
+.videoPlayer .vp_skin .soundControlbar .ui-slider-range {
+    width: 5px;
+    left: 2px
+}
+.videoPlayer .vp_skin .ui-widget-content {
+    border: 0px;
+    border-radius: 0px;
+    background: none;
+    overflow: visible
+}
+.cl {
+    clear: both;
+    height: 0px
+}
+.CTR {
+    text-align: center
+}
+#jw_player_notification {
+    position: absolute;
+    z-index: 10;
+    top: 35%;
+    left: 40%;
+    display: none;
+    padding-top: 20px
+}
+#jw_player_notification.subscriptionNoti {
+    width: 100%;
+    height: 100%;
+    background: url(../images/overlay-bg.png) repeat;
+    left: 0px;
+    top: 0px
+}
+#jw_player_notification .notification_inner {
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    width: 680px;
+    height: 150px;
+    top: 50% !important;
+    position: absolute;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important
+}
+#jw_player_notification .subscribeRent_block span {
+    display: block;
+    float: left;
+    line-height: 50px;
+    font-weight: 500;
+    font-size: 26px;
+    text-transform: uppercase;
+    cursor: pointer
+}
+#jw_player_notification .subscribeRent_block span.type {
+    background: #9a9a9a;
+    padding: 0px 15px
+}
+#jw_player_notification .subscribeRent_block span.amnt {
+    background: #1a83c6;
+    padding: 0px 10px
+}
+#jw_player_notification .subscribeRent_block.rent span.type {
+    width: 135px
+}
+#jw_player_notification .ic_rupee {
+    background-position: -60px -72px;
+    width: 14px;
+    height: 19px;
+    display: inline-block;
+    vertical-align: middle
+}
+#jw_player_notification .notification_btns {
+    margin: 20px auto 0px
+}
+#jw_player_notification .notification_btns li {
+    float: left;
+    padding: 0px 3%;
+    text-align: center;
+    list-style: none
+}
+#jw_player_notification .benefits {
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+    text-align: left
+}
+.playerControlbtn.jw_resize,
+.playerControlbtn.jw_volume {
+    width: 60px !important;
+    text-align: center !important
+}
+.jw-playBtn.jw-replay:after {
+    background: url(../images/player/icon_replay.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border: 0px;
+    margin-top: -15px;
+    margin-left: -15px
+}
+.jw-playBtn.jw-preloader:after {
+    background: url(../images/player/icon-preloader.gif) no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border: 0px;
+    margin-top: -16px;
+    margin-left: -16px
+}
+.jw-playBtn.jw-preloader {
+    background: none !important
+}
+.videoPlayer .vp_skin a.jp-settings {
+    display: inline-block;
+    height: 64px;
+    position: relative;
+    text-align: center;
+    width: 55px;
+    z-index: 1
+}
+.videoPlayer .vp_skin .qualitybox {
+    font-family: 'Roboto', sans-serif;
+    bottom: 60px;
+    right: -50px;
+    position: absolute;
+    transition: all 0.5 ease;
+    z-index: 2;
+    font-size: 16px;
+    color: #fff;
+    width: 150px;
+    height: 250px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0px;
+    opacity: 0;
+    display: none
+}
+.videoPlayer .vp_skin .qualitybox.setqual {
+    display: block;
+    opacity: 1
+}
+.qualiback {
+    padding: 12px 0px 10px 5px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #666666;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none
+}
+.videoPlayer .vp_skin a.jw_favourite {
+    display: inline-block;
+    height: 64px;
+    position: relative;
+    text-align: center;
+    width: 55px;
+    z-index: 1
+}
+.videoPlayer .vp_skin a.jw_download {
+    display: inline-block;
+    height: 64px;
+    position: relative;
+    text-align: center;
+    width: 55px;
+    z-index: 1
+}
+.videoPlayer .vp_skin .settingbox {
+    font-family: 'Roboto', sans-serif;
+    bottom: -300px;
+    right: -50px;
+    position: absolute;
+    transition: all 0.5s ease;
+    z-index: 0;
+    font-size: 16px;
+    color: #fff;
+    width: 188px;
+    height: auto;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 15px 0px 15px;
+    opacity: 0
+}
+.videoPlayer .vp_skin .settingbox.setshow {
+    opacity: 1;
+    bottom: 60px
+}
+.videoPlayer .vp_skin .settingbox p {
+    border-bottom: 1px solid #999999;
+    margin-bottom: 5px;
+    padding: 0px 5px 5px
+}
+.videoPlayer .vp_skin .settingbox li {
+    padding: 2px 5px 2px 15px;
+    border: 0px;
+    cursor: pointer;
+    float: none
+}
+.videoPlayer .vp_skin .settingbox li.current {
+    background: url(../images/player/tick.gif) no-repeat 0 50%
+}
+.playmovie .btnPre,
+.playmovie .btnNxt,
+.playmovie .jw_favourite,
+.playmovie .jw_download {
+    display: none !important
+}
+.showMp4 {
+    display: inline-block !important
+}
+.playmovie .btnPre_30,
+.playmovie .btnNxt_30 {
+    display: block !important
+}
+.playlive .icon-ic_forward_30_1-50,
+.playlive .btnPre,
+.playlive .btnPre_30,
+.playlive .btnNxt_30,
+.playlive .btnNxt,
+.playlive .jw_favourite,
+.playlive .jw_download,
+.playlive .jw_dash {
+    display: none !important
+}
+.playvideo .btnPre_30,
+.playvideo .btnNxt_30 {
+    display: none !important
+}
+.playvideo .btnPre,
+.playvideo .btnNxt,
+.playvideo .jw_download {
+    display: block !important
+}
+.videoPlayer .vp_skin .btnPre i {
+    background: none;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .btnNxt i {
+    background: none;
+    margin-top: 20px;
+    font-size: 22px;
+    color: #fff
+}
+.videoPlayer .vp_skin .captionbox {
+    font-family: 'Roboto', sans-serif;
+    bottom: 60px;
+    right: -50px;
+    position: absolute;
+    z-index: 2;
+    font-size: 16px;
+    color: #fff;
+    width: 110px;
+    height: 250px;
+    transition: a11 0.5s ease;
+    -webkit-transition: a11 0.5s ease;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0px;
+    opacity: 0;
+    display: none
+}
+.videoPlayer .vp_skin .captionbox.setqual {
+    display: block;
+    opacity: 1
+}
+.videoPlayer .captionback {
+    padding: 12px 0px 10px 10px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #666666;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none
+}
+.videoPlayer .captionbox li {
+    float: none !important
+}
+.videoPlayer .captionbox .captionList li {
+    color: #fff;
+    float: none;
+    font-size: 14px;
+    padding: 6px 0px 6px 9px;
+    position: relative
+}
+.videoPlayer .captionbox .captionList li:hover {
+    background: #444444
+}
+#jw_player_notification .replysub {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 30px
+}
+@media screen and (min-width: 319px) and (max-width: 481px) {
+    .jw-logo {
+        width: 130px;
+        display: none
+    }
+    .jw-logo img {
+        width: 100%;
+        height: auto
+    }
+    .jw-playBtn {
+        margin: -18px 0px 0px -18px !important;
+        width: 40px;
+        height: 40px;
+        left: 50%
+    }
+    #jw_player_notification .notification_inner {
+        font-size: 16px;
+        width: 100%;
+        height: 250px
+    }
+    #jw_player_notification .notification_btns li {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px
+    }
+    #jw_player_notification .subscribeRent_block span {
+        line-height: 35px;
+        font-size: 20px
+    }
+    #jw_player_notification .subscribeRent_block {
+        display: inline-block
+    }
+    #jw_player_notification .benefits {
+        text-align: center
+    }
+    .videoPlayer .vp_skin .volumebar {
+        display: none
+    }
+    .videoPlayer .vp_skin {
+        height: 40px
+    }
+    .videoPlayer .vp_skin .timeBar {
+        line-height: 40px;
+        font-size: 11px;
+        padding-left: 10px
+    }
+    .videoPlayer .vp_skin .btnFavourite {
+        width: 22px;
+        height: 22px;
+        background-position: 0px 0px;
+        margin-top: 10px
+    }
+    .videoPlayer .vp_skin .btnDownload {
+        width: 22px;
+        height: 22px;
+        background-position: -26px 0px;
+        margin-top: 10px
+    }
+    .videoPlayer .vp_skin .btnFaceook {
+        width: 22px;
+        height: 22px;
+        background-position: -77px 0px;
+        margin-top: 10px
+    }
+    .videoPlayer .vp_skin .btnTwitter {
+        width: 22px;
+        height: 22px;
+        background-position: -52px 0px;
+        margin-top: 10px
+    }
+    .videoPlayer .vp_skin .btnResize {
+        width: 22px;
+        height: 22px;
+        background-position: -102px 0px;
+        margin-top: 10px
+    }
+    .videoPlayer .vp_skin .customBar {
+        padding: 0px 5px
+    }
+    .videoPlayer .vp_skin .customBar .playerControlbtn {
+        width: 30px;
+        height: 40px
+    }
+    .videoPlayer .vp_skin .playerControlbtn {
+        width: 30px;
+        height: 40px
+    }
+    .videoPlayer .vp_skin .playerControlbtn.jw_play {
+        width: 35px
+    }
+    .videoPlayer .vp_skin .btnPlay i,
+    .videoPlayer .vp_skin .btnPause i {
+        margin-top: 5px
+    }
+    .videoPlayer .vp_skin a.jw-settings {
+        background-position: center 10px
+    }
+    .videoPlayer .vp_skin .settingbox ul {
+        height: 60px;
+        overflow: auto
+    }
+    .videoPlayer .vp_skin .btnPre i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnNxt i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnPlay i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnPre_30 i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnNxt_30 i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnPause i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .btnResize {
+        background-position: none;
+        width: 25px;
+        display: inline-block;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .jw_volume i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .jw_settings i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .jw_favourite i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .videoPlayer .vp_skin .jw_download i {
+        background: none;
+        width: 25px;
+        height: 20px;
+        margin-top: 13px;
+        font-size: 18px;
+        color: #fff
+    }
+    .space {
+        display: inline-block;
+        height: 40px;
+        position: relative;
+        text-align: center;
+        width: 30px;
+        z-index: 1
+    }
+    .videoPlayer .vp_skin a.jw_favourite {
+        display: inline-block;
+        height: 40px;
+        position: relative;
+        text-align: center;
+        width: 30px;
+        z-index: 1
+    }
+    .videoPlayer .vp_skin a.jw_download {
+        display: inline-block;
+        height: 40px;
+        position: relative;
+        text-align: center;
+        width: 30px;
+        z-index: 1
+    }
+    .videoPlayer .vp_skin a.jp-settings {
+        display: inline-block;
+        height: 40px;
+        position: relative;
+        text-align: center;
+        width: 30px;
+        z-index: 1
+    }
+    .playerControlbtn.jw_resize {
+        width: 30px !important;
+        text-align: center !important
+    }
+    .mobile #jw_player_notification .notification_inner {
+        font-size: 16px;
+        width: 100%;
+        height: 250px
+    }
+    .mobile #jw_player_notification .notification_btns li {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px
+    }
+    .mobile #jw_player_notification .subscribeRent_block span {
+        line-height: 35px;
+        font-size: 20px
+    }
+    .mobile #jw_player_notification .subscribeRent_block {
+        display: inline-block
+    }
+    .mobile #jw_player_notification .benefits {
+        text-align: center
+    }
+    .mobile .videoPlayer .vp_skin .volumebar {
+        display: none
+    }
+    .mobile .videoPlayer .vp_skin {
+        height: 40px
+    }
+    .mobile .videoPlayer .vp_skin .timeBar {
+        line-height: 40px
+    }
+    .mobile .videoPlayer .vp_skin .btnFavourite {
+        width: 22px;
+        height: 22px;
+        background-position: 0px 0px;
+        margin-top: 10px
+    }
+    .mobile .videoPlayer .vp_skin .btnDownload {
+        width: 22px;
+        height: 22px;
+        background-position: -26px 0px;
+        margin-top: 10px
+    }
+    .mobile .videoPlayer .vp_skin .btnFaceook {
+        width: 22px;
+        height: 22px;
+        background-position: -77px 0px;
+        margin-top: 10px
+    }
+    .mobile .videoPlayer .vp_skin .btnTwitter {
+        width: 22px;
+        height: 22px;
+        background-position: -52px 0px;
+        margin-top: 10px
+    }
+    .mobile .videoPlayer .vp_skin .btnResize {
+        width: 22px;
+        height: 22px;
+        background-position: -102px 0px;
+        margin-top: 10px
+    }
+    .mobile .videoPlayer .vp_skin .customBar {
+        padding: 0px 5px
+    }
+    .mobile .videoPlayer .vp_skin .customBar .playerControlbtn {
+        width: 28px;
+        height: 40px
+    }
+    .mobile .videoPlayer .vp_skin .playerControlbtn {
+        width: 35px;
+        height: 40px
+    }
+    .mobile .videoPlayer .vp_skin .playerControlbtn.jw_play {
+        width: 40px
+    }
+    .mobile .videoPlayer .vp_skin .btnPlay i,
+    .mobile .videoPlayer .vp_skin .btnPause i {
+        margin-top: 13px
+    }
+}
+.jw-rightclick .jw-reset {
+    display: none
+}
+.jw-rightclick .jw-reset:first-child {
+    display: block
+}
+.btnPause .icon-ic_play-84:before,
+.player .btnPause .icon-ic_play-84:before {
+    content: "\70"
+}
+.jw_subtitle {
+    display: none
+}
+.setleft {
+    width: 80px;
+    float: left
+}
+.setright {
+    width: 102px;
+    float: right;
+    text-align: right
+}
+.setright a {
+    color: #fff;
+    text-decoration: none
+}
+.arw {
+    background: url(../images/arw.png) no-repeat;
+    width: 8px;
+    height: 12px;
+    display: inline-block
+}
+.setmb li {
+    padding: 0px 0px 12px 0px !important;
+    display: inline-block
+}
+.actcol {
+    color: #0094f6 !important
+}
+.actfev {
+    color: #ff0000 !important
+}
+.onoffswitch {
+    position: relative;
+    margin-top: 4px;
+    width: 35px;
+    float: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none
+}
+.onoffswitch-checkbox {
+    display: none
+}
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 10px;
+    padding: 0;
+    line-height: 10px;
+    border: 0px solid #FFFFFF;
+    border-radius: 30px;
+    background-color: #fff
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block;
+    width: 20px;
+    margin: -5px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 31px;
+    border-radius: 30px;
+    transition: all 0.3s ease-in 0s
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #115b8d
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label,
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #115b8d
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
+    background-color: #0094f6;
+    box-shadow: 3px 6px 18px 0px #115b8d
+}
+.arw-lft {
+    background: url(../images/arw-lft.png) 0px 0px no-repeat;
+    width: 8px;
+    height: 12px;
+    margin-right: 3px;
+    display: inline-block
+}
+ul.qualityList,
+ul.captionList {
+    text-align: left
+}
+.qualitybox li {
+    float: none !important
+}
+.qualitybox .qualityList li {
+    color: #fff;
+    float: none;
+    font-size: 14px;
+    padding: 6px 0px 6px 9px;
+    position: relative
+}
+.qualitybox .qualityList li:hover {
+    background: #444444
+}
+input[type="radio"] {
+    display: none
+}
+input[type="radio"] + label {
+    font-family: Arial, sans-serif;
+    font-size: 14px
+}
+input[type="radio"] + label span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: -1px 10px 0 0;
+    vertical-align: sub;
+    cursor: pointer
+}
+input[type="radio"] + label span {
+    background: url(../images/radioBtns.png) 0px 0px no-repeat
+}
+input[type="radio"]:checked + label span {
+    background: url(../images/radioBtns.png) 0px -18px no-repeat
+}
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+    -webkit-transition: background-color 0.4s linear;
+    -o-transition: background-color 0.4s linear;
+    -moz-transition: background-color 0.4s linear;
+    transition: background-color 0.4s linear
+}
+.overlaysub {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    background: url(../images/overlay-bg.png) repeat
+}
+.watchfull {
+    font: 30px/32px 'Roboto', sans-serif;
+    color: #fff
+}
+.ht45 {
+    height: 45px
+}
+.btnsub {
+    width: 114px;
+    height: 40px;
+    font: 18px/40px 'Roboto', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    background: #0094f6;
+    border-radius: 3px;
+    display: block
+}
+.brdsub {
+    border-bottom: 1px solid #666;
+    padding-bottom: 12px
+}
+.Padt12 {
+    padding-top: 12px
+}
+.subtxtd {
+    color: #cecccb;
+    font: 14px 'Roboto', sans-serif
+}
+.subtxtd span {
+    color: #fff;
+    font-size: 22px;
+    margin-right: 12px
+}
+.repsub {
+    padding-top: 40px
+}
+.replysub {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #666666;
+    border-radius: 50%;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    font: 16px/50px 'Roboto', sans-serif;
+    text-align: center
+}
+.replysub i {
+    font-size: 25px;
+    line-height: 50px !important
+}
+.repsub .icon-ic_repeat_1-35 {
+    font-size: 25px;
+    line-height: 50px !important
+}
+.tblwidth {
+    width: 60%
+}
+@media screen and (max-width: 767px) {
+    .watchfull {
+        font: 18px/20px "Roboto", sans-serif
+    }
+    .ht45 {
+        height: 25px
+    }
+    .tblwidth {
+        width: 75%
+    }
+    .btnsub {
+        font: 15px/30px "Roboto", sans-serif;
+        height: 30px;
+        width: 84px
+    }
+    .subtxtd span {
+        color: #fff;
+        font-size: 16px
+    }
+    .videoPlayer .vp_skin .playerProgressbar,
+    .videoPlayer .vp_skin .playerProgressbar .ui-slider-range,
+    .videoPlayer .vp_skin .playerProgressbar .bufferBar {
+        height: 6px
+    }
+    .videoPlayer .vp_skin .playerProgressbar .ui-slider-handle {
+        height: 12px;
+        width: 12px
+    }
+}
+@media screen and (max-width: 480px) {
+    .watchfull {
+        font: 16px/20px "Roboto", sans-serif
+    }
+    .ht45 {
+        height: 18px
+    }
+    .tblwidth {
+        width: 80%
+    }
+    .btnsub {
+        font: 12px/30px "Roboto", sans-serif;
+        height: 30px;
+        width: 74px
+    }
+    .subtxtd span {
+        color: #fff;
+        font-size: 14px
+    }
+    .subtxtd {
+        font: 13px "Roboto", sans-serif
+    }
+    .repsub {
+        padding-top: 20px
+    }
+    .replysub {
+        font: 14px/36px "Roboto", sans-serif;
+        height: 36px;
+        width: 36px;
+        z-index: 10;
+        text-align: center;
+        margin: -18px 0px 0px -18px !important
+    }
+    .replysub i {
+        font-size: 16px;
+        line-height: 36px !important
+    }
+    .videoPlayer .vp_skin .settingbox,
+    .videoPlayer .vp_skin .captionbox,
+    .videoPlayer .vp_skin .qualitybox {
+        bottom: 40px;
+        font-size: 12px;
+        right: -25px
+    }
+    .videoPlayer .vp_skin .settingbox {
+        width: 135px
+    }
+    .videoPlayer .vp_skin .captionbox,
+    .videoPlayer .vp_skin .qualitybox {
+        width: 100px
+    }
+    .setright {
+        width: 50px
+    }
+    .videoPlayer .vp_skin .settingbox ul {
+        height: auto
+    }
+    .videoPlayer input[type="radio"] + label {
+        font-size: 12px
+    }
+    .videoPlayer .qualitybox,
+    .videoPlayer .captionbox .captionList li {
+        font-size: 12px
+    }
+    .qualiback,
+    .videoPlayer .captionback,
+    {
+        font-size: 13px
+    }
+    #jw_player_notification {
+        width: 50%;
+        left: 25%
+    }
+    #subscriptionPop .replysub {
+        margin: 10px 0px
+    }
+}
+@media screen and (max-width: 360px) {
+    .watchfull {
+        font: 16px/20px "Roboto", sans-serif
+    }
+    .brdsub {
+        padding-bottom: 3px
+    }
+    .Padt12 {
+        padding-top: 8px
+    }
+    .ht45 {
+        height: 0px
+    }
+    .tblwidth {
+        width: 90%
+    }
+    .btnsub {
+        font: 12px/25px "Roboto", sans-serif;
+        height: 25px;
+        width: 64px
+    }
+    .subtxtd span {
+        color: #fff;
+        font-size: 13px
+    }
+    .subtxtd {
+        font: 12px "Roboto", sans-serif
+    }
+    #jw_player_notification .repsub {
+        padding-top: 5px
+    }
+    #jw_player_notification .replysub {
+        font: 18px/36px "Roboto", sans-serif
+    }
+    #jw_player_notification .repsub .icon-ic_repeat_1-35 {
+        font-size: 17px;
+        line-height: 36px !important
+    }
+}
+@media screen and (max-width: 321px) {
+    .watchfull {
+        font: 16px/20px "Roboto", sans-serif
+    }
+    .ht45 {
+        height: 0px
+    }
+    .tblwidth {
+        width: 90%
+    }
+    .btnsub {
+        font: 12px/25px "Roboto", sans-serif;
+        height: 25px;
+        width: 64px
+    }
+    .subtxtd span {
+        color: #fff;
+        font-size: 12px
+    }
+    .subtxtd {
+        font: 11px "Roboto", sans-serif
+    }
+    #jw_player_notification .repsub {
+        padding-top: 5px
+    }
+    #jw_player_notification .replysub {
+        font: 12px/36px "Roboto", sans-serif;
+        height: 20px;
+        width: 20px;
+        margin: 0 auto !important;
+        display: block
+    }
+    #jw_player_notification .repsub .icon-ic_repeat_1-35 {
+        font-size: 14px;
+        line-height: 14px !important;
+        margin-top: 3px !important;
+        display: block
+    }
+}
+#autoplayNotification {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 70px;
+    width: auto
+}
+#autoplayNotification h2.title {
+    font: 16px/20px 'Roboto', sans-serif;
+    color: #FFF;
+    margin-bottom: 10px
+}
+#autoplayNotification .mv_thmb {
+    width: 110px;
+    float: left;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden
+}
+#autoplayNotification .mv_thmb img {
+    width: 100%;
+    height: auto;
+    display: block
+}
+#autoplayNotification .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0px
+}
+#autoplayNotification .overlay span {
+    position: absolute;
+    font-size: 16px;
+    left: 50%;
+    top: 50%
+}
+#autoplayNotification .autoplay_othdtls {
+    overflow: hidden;
+    width: 160px;
+    padding-left: 10px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px
+}
+#autoplayNotification .mv_dtls {
+    font-size: 13px;
+    color: #ababab;
+    margin-bottom: 5px
+}
+#autoplayNotification .mv_Title {
+    font-size: 18px;
+    font-weight: 500
+}
+#autoplayNotification .countDownTimer {
+    font-weight: 700px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: bottom;
+    color: #0094f6;
+    line-height: 23px;
+    margin-left: 5px
+}
+#hun_vp [type="checkbox"]:not(:checked),
+#hun_vp [type="checkbox"]:checked {
+    left: 0px !important;
+    right: 0px !important;
+    position: relative !important
+}
+#progressBar .ui-slider-handle {
+    margin-left: 0px
+}
+#progressBar.nearEnd .ui-slider-handle {
+    margin-left: 10px
+}
+.jw-nextup-container {
+    display: none
+}
+.jw-cast-icon {
+    position: absolute;
+    z-index: 9999;
+    right: 20px;
+    top: 20px;
+    font-size: 22px;
+    color: #fff;
+    text-decoration: none
+}
+.appleFullscreen {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #111
+}
+.applefixed {
+    position: fixed;
+    overflow: hidden;
+    hight: 100%
+}
+.liveRibbon {
+    position: absolute;
+    left: 0px;
+    top: 25px;
+    width: 70px;
+    height: auto;
+    z-index: 9;
+    display: none
+}
+.liveRibbon img {
+    width: 100%;
+    height: auto
+}
+.jw-title-primary {
+    display: none
+}
+#jw_player_notification .icon-ic_repeat_1-35:before {
+    content: "\72"
+}
+.playerFullScreen,
+.playerFullScreen #adContainer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 16777271;
+    background: #000;
+    height: 100% !important;
+    width: 100% !important;
+}
+.playerFullScreen video {
+    position: absolute;
+    width: 100% !important;
+    height: auto !important;
+}
+.playerFullScreen #adContainer video {
+    top: 0px !important;
+}
