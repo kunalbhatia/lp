@@ -1,6 +1,14 @@
-var ver_check = "Player: videoplayer js updated on 01 - 12 - 2017 | 12:40";
+var ver_check = "Player: videoplayer js updated on 08 - 12 - 2017 | 19:11";
 console.log(ver_check);
-
+/*
+<div id="videoPlayerObj" style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(255,255,255,0.0);
+    z-index: 99;
+"></div>
+*/
 function makePlayer(id, external_vd, external_config) {
     var dashplayer;
     var firstAd=true;
@@ -19,6 +27,7 @@ function makePlayer(id, external_vd, external_config) {
     var adErrorCountMax = 1;
     var tracking_url = locationProtocol + "//ping.hungama.com/eventTracker.js";
     var new_tracking_url = locationProtocol + "//ping.hungama.com/mediaEvent.py";
+    var playhungama_tracking_url = "//ping.hungama.com/addTracker.py";
     var config = {
         vd: {},
         withCredentials:true,
@@ -131,7 +140,7 @@ function makePlayer(id, external_vd, external_config) {
     config.vd = vd;
     vplayerWidth = element.width();
     vplayerHeight = (vplayerWidth / 16) * 9;
-    var skinHtml = '<div id="hun_vp" class="videoPlayer player" style="overflow:hidden;width:' + vplayerWidth + 'px;height:' + vplayerHeight + 'px; background:#000;"><div id="adContainer" style="overflow:hidden;width:100%;height:100%; position: absolute;top:0px;left:0px;z-index:99;"></div><div class="bg_logo"></div><div class="thumb"></div><div class="liveRibbon"><img src="http://player.hungama.com/lap/images/liveplayer.png" alt="live"/></div><video id="videoPlayerObj" width="' + vplayerWidth + '" height="' + vplayerHeight + '"  src="' + vd.file + '" poster="' + vd.image + '"></video><div><a href="javascript:;" class="jw-playBtn replysub"><i class="icon-ic_play-84"></i></a></div><div id="loadingVideo" class="loadersmall"></div><div class="vp_skin mouseout"> <div class="playerProgressbar"> <div class="bufferBar"></div> <div id="playerProgressbar"></div> </div> <div class="playerControls left"> <ul class="playerControlbar"> <li><a href="javascript:void(0);" class="playerControlbtn btnPre_30"><i class="playerIcons icon-ic_replay30_1-49"></i></a><a href="javascript:void(0);" class="playerControlbtn btnPre"><i class="icon-ic_previous-86"></i></a></li> <li><a href="javascript:void(0);" class="playerControlbtn jw_play btnPlay"><i class="icon-ic_play-84"></i></a> </li> <li><a href="javascript:void(0);" class="playerControlbtn btnNxt_30"><i class="icon-ic_forward_30_1-50"></i></a><a href="javascript:void(0);" class="playerControlbtn btnNxt"><i class="icon-ic_next-87"></i></a></li> <li> <div class="timeBar"><span class="jw_position">0:00</span> <span class="jw_dash">/</span> <span class="jw_duration">0:00</span> </div> </li> </ul> </div> <div class="playerControls right clearfix"> <ul class="playerControlbar"><li><span class="space"></span></li> <li class="customBar"> <a href="javascript:void(0);" class="playerControlbtn jw_favourite"><i class="icon-ic_favourite_1-46" id="hpjw_fav"></i></a> </li><li class="mp4"> <a href="javascript:void(0);" class="playerControlbtn jw_download"><i class="icon-ic_mp4-73-73"></i></a> </li><li class="volumebar"><div class="soundControlbar"><div id="soundControlbar"></div></div><a href="javascript:void(0);" class="playerControlbtn jw_volume"><i class="playerIcons btnVolume icon-ic_volume_1-37"></i></a></li><li class="settingbar"><a href="javascript:void(0);" class="playerControlbtn jp-settings jw_settings" style="display:none;"><i class="playerIcons icon-ic_settings_1-09"></i></a><div class="settingbox"><div class="inner"><ul class="setmb"><li class="clearfix" id="jw_autoplay_li"><div class="setleft">Autoplay</div><div class="setright"><input type="checkbox" name="onoffswitch1" id="autoPlaySwitch" checked></div></li><li class="clearfix jw_subtitle"><div class="setleft">Subtitles</div><div class="setright"><a href="javascript:;">Off <span class="arw"></span></a></div></li><li class="clearfix vdoQuality" style="display:none;"><div class="setleft">Quality</div><div class="setright"><a href="javascript:;" class="setquality">Auto <span class="arw"></span></a></div></li></ul></div></div><div class="captionbox" style="height: auto;"><a class="captionback" href="javascript:;"><span class="arw-lft"></span> Caption</a><ul class="captionList"></ul></div><div class="qualitybox"><a href="javascript:;" class="qualiback"><span class="arw-lft"></span> Quality</a><ul class="qualityList"> <li> <div> <input type="radio" id="auto" name="radio"/> <label for="auto"><span></span>Auto</label> </div></li></ul></</li><li class="resizebar"><a href="javascript:void(0);" class="playerControlbtn jw_resize"><i class="btnResize icon-ic_fullscreen-52"></i></a> </li></ul></div></div><a href="javascript:void(0);" class="jw-cast-icon icon-ic_cast"></a></div>';
+    var skinHtml = '<div id="hun_vp" class="videoPlayer player" style="overflow:hidden;width:' + vplayerWidth + 'px;height:' + vplayerHeight + 'px; background:#000;"><div id="adContainer" style="overflow:hidden;width:100%;height:100%; position: absolute;top:0px;left:0px;z-index:99;"></div><!--<button is="google-cast-button" id="castbutton"></button>--><div class="bg_logo"></div><div class="thumb"></div><div class="liveRibbon"><img src="http://player.hungama.com/lap/images/liveplayer.png" alt="live"/></div><video id="videoPlayerObj" width="' + vplayerWidth + '" height="' + vplayerHeight + '"  src="' + vd.file + '" poster="' + vd.image + '"></video><div><a href="javascript:;" class="jw-playBtn replysub"><i class="icon-ic_play-84"></i></a></div><div id="loadingVideo" class="loadersmall"></div><div class="vp_skin mouseout"> <div class="playerProgressbar"> <div class="bufferBar"></div> <div id="playerProgressbar"></div> </div> <div class="playerControls left"> <ul class="playerControlbar"> <li><a href="javascript:void(0);" class="playerControlbtn btnPre_30"><i class="playerIcons icon-ic_replay30_1-49"></i></a><a href="javascript:void(0);" class="playerControlbtn btnPre"><i class="icon-ic_previous-86"></i></a></li> <li><a href="javascript:void(0);" class="playerControlbtn jw_play btnPlay"><i class="icon-ic_play-84"></i></a> </li> <li><a href="javascript:void(0);" class="playerControlbtn btnNxt_30"><i class="icon-ic_forward_30_1-50"></i></a><a href="javascript:void(0);" class="playerControlbtn btnNxt"><i class="icon-ic_next-87"></i></a></li> <li> <div class="timeBar"><span class="jw_position">0:00</span> <span class="jw_dash">/</span> <span class="jw_duration">0:00</span> </div> </li> </ul> </div> <div class="playerControls right clearfix"> <ul class="playerControlbar"><li><span class="space"></span></li> <li class="customBar"> <a href="javascript:void(0);" class="playerControlbtn jw_favourite"><i class="icon-ic_favourite_1-46" id="hpjw_fav"></i></a> </li><li class="mp4"> <a href="javascript:void(0);" class="playerControlbtn jw_download"><i class="icon-ic_mp4-73-73"></i></a> </li><li class="volumebar"><div class="soundControlbar"><div id="soundControlbar"></div></div><a href="javascript:void(0);" class="playerControlbtn jw_volume"><i class="playerIcons btnVolume icon-ic_volume_1-37"></i></a></li><li class="settingbar"><a href="javascript:void(0);" class="playerControlbtn jp-settings jw_settings" style="display:none;"><i class="playerIcons icon-ic_settings_1-09"></i></a><div class="settingbox"><div class="inner"><ul class="setmb"><li class="clearfix" id="jw_autoplay_li"><div class="setleft">Autoplay</div><div class="setright"><input type="checkbox" name="onoffswitch1" id="autoPlaySwitch" checked></div></li><li class="clearfix jw_subtitle"><div class="setleft">Subtitles</div><div class="setright"><a href="javascript:;">Off <span class="arw"></span></a></div></li><li class="clearfix vdoQuality" style="display:none;"><div class="setleft">Quality</div><div class="setright"><a href="javascript:;" class="setquality">Auto <span class="arw"></span></a></div></li></ul></div></div><div class="captionbox" style="height: auto;"><a class="captionback" href="javascript:;"><span class="arw-lft"></span> Caption</a><ul class="captionList"></ul></div><div class="qualitybox"><a href="javascript:;" class="qualiback"><span class="arw-lft"></span> Quality</a><ul class="qualityList"> <li> <div> <input type="radio" id="auto" name="radio"/> <label for="auto"><span></span>Auto</label> </div></li></ul></</li><li class="resizebar"><a href="javascript:void(0);" class="playerControlbtn jw_resize"><i class="btnResize icon-ic_fullscreen-52"></i></a> </li></ul></div></div><a href="javascript:void(0);" class="jw-cast-icon icon-ic_cast"></a></div>';
     element.html(skinHtml);
     getPlayType();
     if (isApple) {
@@ -142,6 +151,7 @@ function makePlayer(id, external_vd, external_config) {
     checkDomain(id, element);
 
     videoPlayerObj = document.getElementById('videoPlayerObj');
+    
     videoPlayerObj.addEventListener("loadedmetadata", function() {
         var captionTxt = "";
         element.find("video track").remove();
@@ -252,6 +262,15 @@ function makePlayer(id, external_vd, external_config) {
     var adsManager;
     var adDisplayContainer;
     var isAdRunning=false;
+    var adt_adTagPresent=false;
+    var adt_adImpre=false;
+    var adt_adStart=false;
+    var adt_adError=false;
+    var contentInitialized = false;
+    var adsLoaded = false;
+    var adDisplayContainer = new google.ima.AdDisplayContainer(adContent, videoPlayerObj);
+    adsLoader = new google.ima.AdsLoader(adDisplayContainer);
+    adsRequest = new google.ima.AdsRequest();
 
     var contentEndedListener = function() {
         adsLoader.contentComplete();
@@ -264,6 +283,7 @@ function makePlayer(id, external_vd, external_config) {
             jw_adPlaying();
         }
         try {
+            
             adsManager.init(vplayerWidth, vplayerHeight, google.ima.ViewMode.NORMAL);
             adsManager.start();
         } catch (adError) {
@@ -271,7 +291,15 @@ function makePlayer(id, external_vd, external_config) {
             // An error may be thrown if there was a problem with the VAST response.
         }
     }
-
+    videoPlayerObj.addEventListener('loadedmetadata',function() {
+        console.log("Player: loadedmetadata called");
+        contentInitialized = true;
+        if (adsLoaded) {
+            console.log("Player: calling startAds");
+            startAds();
+        }
+    });
+          
     function pauseAd() {
         adsManager.pause();
         console.log("Player: Ad Pause Called");
@@ -281,15 +309,16 @@ function makePlayer(id, external_vd, external_config) {
     }
 
     function requestAds() {
+        adt_adTagPresent=true;
         if (!adplayed && !firstAd && isApple) {
             console.log("Player: requestAds apple");
+            
             //alert("Player: requestAds");
             showPreloader();
-            var adDisplayContainer = new google.ima.AdDisplayContainer(adContent, videoPlayerObj);
+            
             adplayed = true;
             adDisplayContainer.initialize();
-            adsLoader = new google.ima.AdsLoader(adDisplayContainer);
-            adsRequest = new google.ima.AdsRequest();
+            
             adsRequest.adTagUrl = vd.ad_setup.tag;
             videoPlayerObj.onended = contentEndedListener;
             adsLoader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, onAdsManagerLoaded, false);
@@ -305,11 +334,10 @@ function makePlayer(id, external_vd, external_config) {
             console.log("Player: requestAds android");
             //alert("Player: requestAds");
             showPreloader();
-            var adDisplayContainer = new google.ima.AdDisplayContainer(adContent, videoPlayerObj);
+           
             adplayed = true;
             adDisplayContainer.initialize();
-            adsLoader = new google.ima.AdsLoader(adDisplayContainer);
-            adsRequest = new google.ima.AdsRequest();
+            
             adsRequest.adTagUrl = vd.ad_setup.tag;
             videoPlayerObj.onended = contentEndedListener;
             adsLoader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, onAdsManagerLoaded, false);
@@ -342,6 +370,7 @@ function makePlayer(id, external_vd, external_config) {
     }
 
     function onAdError(adErrorEvent) {
+        adt_adError=true;
         isAdRunning=false;
         adPlay = 0;
         console.log("Player: onAdError");
@@ -355,15 +384,14 @@ function makePlayer(id, external_vd, external_config) {
             adErrorCount++;
         }
     }
-
     function destroyAdAndVideo() {
         isAdRunning=false;
         if (adsManager) {
             clearInterval(adTimeInterval);
             adTimeInterval=null;
             adsManager.destroy();
-            $("#adContainer").hide();
-            $("#adContainer").html('');
+            //$("#adContainer").hide();
+            //$("#adContainer").html('');
         }
         if (vd.type == "hls") {
             hls.destroy();
@@ -380,13 +408,13 @@ function makePlayer(id, external_vd, external_config) {
         console.log("Player: destroyAds");
         if (adsManager) {
             adsManager.destroy();
-            adsManager=null;
+            //adsManager=null;
         }
         clearInterval(adTimeInterval);
         adTimeInterval = null;
         adRemainingTime = 0;
-        $("#adContainer").hide();
-        $("#adContainer").html('');
+        //$("#adContainer").hide();
+        //$("#adContainer").html('');
         showPreloader();
         if (vd.type == "hls") {
             hls.destroy();
@@ -431,6 +459,7 @@ function makePlayer(id, external_vd, external_config) {
     }
 
     function onAdImpression() {
+        adt_adImpre=true;
         console.log("Player: onAdImpression");
         //alert("Player: onAdImpression");
         showPreloader();
@@ -448,11 +477,12 @@ function makePlayer(id, external_vd, external_config) {
     var adRemainingTime = 0;
 
     function onAdStarted() {
+        adt_adStart=true;
         console.log("Player: onAdStarted");
         isAdRunning=true;
         //alert("Player: onAdStarted");
         if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-			console.log("here notfullscreen");
+			//console.log("here notfullscreen");
 			resizePlayer(element.find(".videoPlayer").width());
         }else{
             console.log("here fullscreen");
@@ -466,7 +496,7 @@ function makePlayer(id, external_vd, external_config) {
                     $("#adContainer").find('#adRem').remove();
                     $("#adContainer").append("<p id='adRem' style='background:rgba(33,33,33,.8);color:#fff; position:absolute; bottom:10px; right:0px; left:0px; padding: 0.5em; font-size:12px; font-family: Arial,Helvetica,sans-serif; font-size: .75em;font-style: normal;font-weight: 400;color: #fff;font-variant: normal;font-stretch: normal;'>This ad will end in " + Math.round(adsManager.getRemainingTime()) + " seconds.</p>");
                     $("#adContainer").show();
-                    console.log("Player: adTimeInterval adContainer show");
+                    //console.log("Player: adTimeInterval adContainer show");
                 }else if(vd.ad_setup.client=="googima"){
                     $("#adContainer").find('#adRem').remove();
                     clearInterval(adTimeInterval);
@@ -484,17 +514,21 @@ function makePlayer(id, external_vd, external_config) {
 
     function onAdsManagerLoaded(adsManagerLoadedEvent) {
         console.log("Player: onAdsManagerLoaded");
+        adsLoaded=true;
         adsManager = adsManagerLoadedEvent.getAdsManager(videoPlayerObj);
         adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
         adsManager.addEventListener(google.ima.AdEvent.Type.IMPRESSION, onAdImpression, false);
         adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdComplete, false);
         adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdSkipped, false);
         adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStarted, false);
-        if (!videoPlayerObj.autoplay) {
-            videoPlayerObj.play();
-        }
-        videoPlayerObj.pause();
-        startAds();
+        if (contentInitialized) {
+            if (!videoPlayerObj.autoplay) {
+                videoPlayerObj.play();
+            }
+            videoPlayerObj.pause();
+            console.log("Player: calling startAds");
+            startAds();
+          }
     }
     /*--------------------------AD CODE ENDS--------------*/
     element.find("#playerProgressbar").slider({
@@ -587,6 +621,185 @@ function makePlayer(id, external_vd, external_config) {
         if (Hls.isSupported()) {
             console.log("Player: hls supported");
             hls.on(Hls.Events.ERROR, function(event, data) {
+                var errorType = data.type;
+                var errorDetails = data.details;
+                var errorFatal = data.fatal;
+                console.log("Player: Error Occured");
+                console.log("Player: Error Details: "+errorDetails);
+                switch(data.details) {
+                    /*****************NETWORK ERRORS********************/
+                    case Hls.ErrorDetails.MANIFEST_LOAD_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_MANIFEST_LOAD_ERROR");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_MANIFEST_LOAD_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.MANIFEST_LOAD_TIMEOUT:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_MANIFEST_LOAD_TIMEOUT ");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_MANIFEST_LOAD_TIMEOUT");
+                        }
+                    break;
+                    case Hls.ErrorDetails.MANIFEST_PARSING_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_MANIFEST_PARSING_ERROR ");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_MANIFEST_PARSING_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.LEVEL_LOAD_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_LEVEL_LOAD_ERROR ");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_LEVEL_LOAD_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.LEVEL_LOAD_TIMEOUT:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_LEVEL_LOAD_TIMEOUT");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_LEVEL_LOAD_TIMEOUT");
+                        }
+                    break;
+                    case Hls.ErrorDetails.AUDIO_TRACK_LOAD_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_AUDIO_TRACK_LOAD_ERROR");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_AUDIO_TRACK_LOAD_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.AUDIO_TRACK_LOAD_TIMEOUT:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_AUDIO_TRACK_LOAD_TIMEOUT");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_AUDIO_TRACK_LOAD_TIMEOUT");
+                        }
+                    break;
+                    case Hls.ErrorDetails.FRAG_LOAD_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_FRAG_LOAD_ERROR");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_FRAG_LOAD_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.FRAG_LOAD_TIMEOUT:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_FRAG_LOAD_TIMEOUT");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_FRAG_LOAD_TIMEOUT");
+                        }
+                    break;
+                    case Hls.ErrorDetails.KEY_LOAD_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_KEY_LOAD_ERROR");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_KEY_LOAD_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.KEY_LOAD_TIMEOUT:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "NW_ER_KEY_LOAD_TIMEOUT");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "NW_ER_KEY_LOAD_TIMEOUT");
+                        }
+                    break;
+                    /*****************MEDIA ERRORS********************/
+                    case Hls.ErrorDetails.MANIFEST_INCOMPATIBLE_CODECS_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_MANIFEST_INCOMPATIBLE_CODECS_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.FRAG_LOOP_LOADING_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_FRAG_LOOP_LOADING_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.FRAG_DECRYPT_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_FRAG_DECRYPT_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.FRAG_PARSING_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_FRAG_PARSING_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_ADD_CODEC_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_ADD_CODEC_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_APPEND_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_APPEND_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_APPENDING_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_APPENDING_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_STALLED_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_STALLED_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_FULL_ERROR:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_FULL_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_SEEK_OVER_HOLE:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_SEEK_OVER_HOLE");
+                        }
+                    break;
+                    case Hls.ErrorDetails.BUFFER_NUDGE_ON_STALL:
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MD_ER_BUFFER_NUDGE_ON_STALL");
+                        }
+                    break;
+                    /*****************MUX ERRORS********************/
+                    case Hls.ErrorDetails.REMUX_ALLOC_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "MX_ER_REMUX_ALLOC_ERROR ");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "MX_ER_REMUX_ALLOC_ERROR");
+                        }
+                    break;
+                    /*****************OTHER ERRORS********************/
+                    case Hls.ErrorDetails.LEVEL_SWITCH_ERROR:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "OTHER_ER_LEVEL_SWITCH_ERROR");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "OTHER_ER_LEVEL_SWITCH_ERROR");
+                        }
+                    break;
+                    case Hls.ErrorDetails.INTERNAL_EXCEPTION:
+                        if (typeof jw_mediaError == 'function') {
+                            jw_mediaError('video', "OTHER_ER_INTERNAL_EXCEPTION");
+                        }
+                        if (typeof jw_mediaError_tracking == 'function') {
+                            jw_mediaError_tracking('video', "OTHER_ER_INTERNAL_EXCEPTION");
+                        }
+                    break;
+                }
+                /*
                 if (data.fatal) {
                     switch (data.type) {
                         case Hls.ErrorTypes.NETWORK_ERROR:
@@ -608,6 +821,7 @@ function makePlayer(id, external_vd, external_config) {
                             break;
                     }
                 }
+                */
             });
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 element.find('.setquality').html("Auto" + " <span class='arw'></span>");
@@ -1176,7 +1390,7 @@ function makePlayer(id, external_vd, external_config) {
     $(window).on("orientationchange", function() {
         console.log("player: orientationchange event tiggered");
         if($("#hun_vp").hasClass("playerFullScreen")){
-            setTimeout(function(){alignVideo();},300);
+            setTimeout(function(){alignVideo();},500);
         }
        
         if (isApple) {
@@ -1189,10 +1403,10 @@ function makePlayer(id, external_vd, external_config) {
                     setTimeout(function() {
                         videoPlayerObj.play(true);
                     }, 500);
-                }, 300);
+                }, 500);
             }
         }else{
-			setTimeout(function(){resizePlayer();},300);
+			setTimeout(function(){resizePlayer();},500);
 		}
     });
 
@@ -1274,9 +1488,9 @@ function makePlayer(id, external_vd, external_config) {
         document.addEventListener('MSFullscreenChange', exitHandler, false);
     }
     function alignVideo(){
-        console.log($(window).height() + " / "+ $("#hun_vp video").height());
-        var playerTopPos = ($(window).height() - element.find("#hun_vp video").height())/2;
-        element.find("#hun_vp video, #hun_vp #adContainer").animate({"top":playerTopPos+"px"},100);
+        console.log("Player: window height:"+$(window).height() + " / player height: "+ $("#hun_vp #videoPlayerObj").height());
+        var playerTopPos = ($(window).height() - element.find("#hun_vp #videoPlayerObj").height())/2;
+        element.find("#hun_vp #videoPlayerObj, #hun_vp #adContainer").animate({"top":playerTopPos+"px"},100);
     }
     function exitFullscreenFormality(){
 		console.log("exitFullscreenFormality");
@@ -1639,9 +1853,9 @@ function makePlayer(id, external_vd, external_config) {
     }
 
     function resizePlayer(w) {
-		console.log("resize");
+		//console.log("resize");
 		var w =  $("#hun_vp").width();
-        console.log("w: " + w);
+        //console.log("w: " + w);
         var h = Math.round((w / 16) * 9);
         $("#hun_vp, #hun_vp #adContainer,#videoPlayerObj").animate({"width": w + "px"},100);
         $("#adContainer>div,#adContainer iframe").animate({"width": w + "px"},100);
@@ -1715,6 +1929,7 @@ function makePlayer(id, external_vd, external_config) {
         }
         if (vd.ad_setup.tag != "") {
             console.log("Player: Ad tag present");
+            adt_adTagPresent=true;
             $("#adContainer").show();
             if (vd.type == "hls") {
                 console.log("Player: hls type");
@@ -1912,7 +2127,7 @@ function makePlayer(id, external_vd, external_config) {
                 //video_complete();
             }
         }
-        console.dir(new_params);
+        //console.dir(new_params);
         if (new_params.cid != "1") {
             $.ajax({
                 type: 'GET',
@@ -1931,7 +2146,55 @@ function makePlayer(id, external_vd, external_config) {
                 }
             });
         }
+        if(location.hostname=="play.hungama.com"){
+            var device_name="";
+            var os_name="";
+            var browser_name="";
+            if (typeof get_device_info == 'function') {
+                device_name = get_device_info().device_model;
+                os_name = get_device_info().os_name;
+                browser_name = get_device_info().browser;
+            }
+            if(adt_adImpre){
+                adt_adTagPresent=true;
+            }
+            var for_playhungama = {
+                platform:"WEB",
+                property:"PLAYHUNGAMA",
+                device_name:device_name,
+                os_name:os_name,
+                browser_name:browser_name,
+                adt_adTagPresent:adt_adTagPresent,
+                adt_adImpre:adt_adImpre,
+                adt_adStart:adt_adStart,
+                adt_adError:adt_adError
+            }
+            console.log("Player: playhungama_tracking: "+for_playhungama);
+            $.ajax({
+                type: 'GET',
+                url: playhungama_tracking_url + "?" + $.param(for_playhungama),
+                contentType: 'text/plain',
+                xhrFields: {
+                    withCredentials: false
+                },
+                success: function() {
+                    console.log("Player: playhungama_tracking_url success");
+                    adt_adTagPresent=false;
+                    adt_adImpre=false;
+                    adt_adStart=false;
+                    adt_adError=false;
+                },
+                error: function() {
+                    console.log("Player: playhungama_tracking_url failed");
+                    adt_adTagPresent=false;
+                    adt_adImpre=false;
+                    adt_adStart=false;
+                    adt_adError=false;
+                }
+            });
+        }
     }
+
 
     function checkDomain(id, element) {
         var c = false;
@@ -2057,6 +2320,7 @@ function makePlayer(id, external_vd, external_config) {
         fs: fs,
         exitFullscreenFormality:exitFullscreenFormality,
         dashplayer:dashplayer,
-        startAds:startAds
+        startAds:startAds,
+        adsManager:adsManager
     };
 }
